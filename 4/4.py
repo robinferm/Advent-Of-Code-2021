@@ -109,6 +109,9 @@ def mark_numbers(df):
             # Check if row complete
             if row_win(dfs[i]):
                 if i not in dfs_winners:
+                    # Using dict to only get one result per dataframe
+                    # order is used to know which board was solved last
+                    # {key: [dataframe, order, number]}
                     dfs_winners[i] = [dfs[i], v, x]
                     v += 1
 
@@ -145,10 +148,11 @@ def part2():
     winners = mark_numbers(df)
 
     for k,v in winners.items():
+        # get last item
         if v[1] == len(winners)-1:
             num = v[2]
-            sumasd = sum(v[0])
-            return int(num) * int(sumasd)
+            dfsum = sum(v[0])
+            return int(num) * int(dfsum)
 
     
 print(f"Part 1: {part1()}")
