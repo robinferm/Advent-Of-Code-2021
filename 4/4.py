@@ -53,16 +53,21 @@ def calc_sum(df, row):
                 sum += int(y)
     return sum
 
-# Find and replace drawn numbers with X
-df = pd.DataFrame(newlist)
-for x in numbers:
-    df = df.replace(x, "X")
-    win, row = check_for_win(df)
-    if win:
-        winning_number = x
-        sum = calc_sum(df, row)
-        res = sum * int(x)
-        print(f"Part 1: {res}")
-        break
+def part1():
+    # Find and replace drawn numbers with X
+    df = pd.DataFrame(newlist)
+    for x in numbers:
+        df = df.replace(x, "X")
+        win, row = check_for_win(df)
+        if win:
+            winning_number = x
+            sum = calc_sum(df, row)
+            res = sum * int(winning_number)
+            return res
 
 
+print(f"Part 1: {part1()}")
+
+
+def part2():
+    return 0
