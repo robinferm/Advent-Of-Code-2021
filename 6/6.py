@@ -9,16 +9,7 @@ def swap(dict, a, b):
 
 def part1_and_part2(test = False):
     input = read_file("testinput.txt") if test else read_file("input.txt")
-
-    dict = {'0':input.count(0),
-            '1':input.count(1),
-            '2':input.count(2),
-            '3':input.count(3),
-            '4':input.count(4),
-            '5':input.count(5),
-            '6':input.count(6),
-            '7':input.count(7),
-            '8':input.count(8)}
+    dict = {str(x): input.count(x) for x in range(9)}
 
     # Loop days
     for _ in range(256):
